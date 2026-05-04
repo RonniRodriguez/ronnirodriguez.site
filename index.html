@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light only">
+    <title>Ronni Rodriguez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background: #D4CFC7;
+            color-scheme: light only;
+        }
+
+        body {
+            font-family: 'DM Sans', system-ui, sans-serif;
+            color: #3D3D3D;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 50px 24px;
+        }
+
+        .card {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #FAF9F7;
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .header {
+            background: #5C5347;
+            color: #FAF9F7;
+            padding: 45px 55px;
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .avatar {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            flex-shrink: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(255,255,255,0.25);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-info {
+            flex: 1;
+        }
+
+        .name {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #FAF9F7;
+            margin-bottom: 4px;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #C9B99A;
+            margin-bottom: 16px;
+        }
+
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px 20px;
+        }
+
+        .contact-item {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+
+        a.contact-item:hover {
+            color: #fff;
+        }
+
+        .main {
+            padding: 45px 55px;
+        }
+
+        .section {
+            margin-bottom: 38px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #8B7355;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E8E3DC;
+        }
+
+        .text {
+            font-size: 0.95rem;
+            color: #4A4A4A;
+            line-height: 1.8;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #5C5347;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 16px;
+            background: #EDE8E0;
+            border-radius: 20px;
+        }
+
+        .entry {
+            margin-bottom: 28px;
+        }
+
+        .entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .entry-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+
+        .entry-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #2D2D2D;
+        }
+
+        .entry-sub {
+            font-size: 0.9rem;
+            color: #8B7355;
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        .entry-location {
+            font-size: 0.85rem;
+            color: #777;
+            font-weight: 400;
+        }
+
+        .entry-date {
+            font-size: 0.8rem;
+            color: #999;
+            white-space: nowrap;
+            background: #F0EDE8;
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+
+        .entry-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .entry-list li {
+            font-size: 0.9rem;
+            color: #555;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            position: relative;
+        }
+
+        .entry-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #8B7355;
+            font-size: 0.8rem;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .three-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .skills-section {
+            background: #F5F3EF;
+            padding: 20px 24px;
+            border-radius: 8px;
+        }
+
+        .skills-section h3 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #5C5347;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill {
+            font-size: 0.8rem;
+            color: #5C5347;
+            background: #fff;
+            padding: 6px 14px;
+            border-radius: 4px;
+            border: 1px solid #E0DBD3;
+        }
+
+        .project-card {
+            background: #F8F6F3;
+            border-radius: 8px;
+            padding: 22px 26px;
+            margin-bottom: 20px;
+            border-left: 3px solid #8B7355;
+        }
+
+        .project-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2D2D2D;
+            margin-bottom: 10px;
+        }
+
+        .project-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .project-title a:hover {
+            color: #8B7355;
+        }
+
+        .project-link {
+            font-size: 0.8rem;
+            color: #8B7355;
+            margin-left: 8px;
+        }
+
+        .project-desc {
+            font-size: 0.875rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech {
+            font-size: 0.7rem;
+            color: #777;
+            background: #EDEAE5;
+            padding: 4px 10px;
+            border-radius: 3px;
+        }
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .edu-card {
+            background: #F8F6F3;
+            padding: 20px 24px;
+            border-radius: 8px;
+        }
+
+        .edu-school {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2D2D2D;
+            margin-bottom: 4px;
+        }
+
+        .edu-degree {
+            font-size: 0.9rem;
+            color: #8B7355;
+            margin-bottom: 8px;
+        }
+
+        .edu-details {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .involvement {
+            background: #F5F3EF;
+            padding: 16px 22px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 20px 16px;
+            }
+            
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 35px 30px;
+            }
+            
+            .contact {
+                justify-content: center;
+            }
+            
+            .name {
+                font-size: 1.8rem;
+            }
+            
+            .main {
+                padding: 35px 28px;
+            }
+            
+            .entry-head {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .entry-date {
+                align-self: flex-start;
+            }
+
+            .two-columns, .three-columns, .edu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <header class="header">
+            <div class="avatar">
+                <img src="profile.jpg" alt="Ronni Rodriguez">
+            </div>
+            <div class="header-info">
+                <h1 class="name">Ronni Rodriguez</h1>
+                <p class="tagline">AI Engineering • Full-Stack Development • Machine Learning</p>
+                <div class="contact">
+                    <span class="contact-item">📍 Clifton, NJ</span>
+                    <span class="contact-item">(646) 338-1011</span>
+                    <a href="mailto:ronni.rod@rutgers.edu" class="contact-item">ronni.rod@rutgers.edu</a>
+                </div>
+                <div class="contact">
+                    <a href="https://linkedin.com/in/ronnirodriguez" class="contact-item" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/ronnirodriguez" class="contact-item" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="main">
+            <section class="section">
+                <h2 class="section-title">Skills</h2>
+                <div class="three-columns">
+                    <div class="skills-section">
+                        <h3>Languages</h3>
+                        <div class="skill-list">
+                            <span class="skill">Python</span>
+                            <span class="skill">Java</span>
+                            <span class="skill">JavaScript</span>
+                            <span class="skill">C</span>
+                            <span class="skill">SQL</span>
+                        </div>
+                    </div>
+                    <div class="skills-section">
+                        <h3>Tools & Frameworks</h3>
+                        <div class="skill-list">
+                            <span class="skill">Docker</span>
+                            <span class="skill">Git</span>
+                            <span class="skill">Flask</span>
+                            <span class="skill">Streamlit</span>
+                            <span class="skill">OpenAI</span>
+                            <span class="skill">Llama</span>
+                        </div>
+                    </div>
+                    <div class="skills-section">
+                        <h3>Applications</h3>
+                        <div class="skill-list">
+                            <span class="skill">RAG</span>
+                            <span class="skill">LLMs</span>
+                            <span class="skill">Agentic Workflows</span>
+                            <span class="skill">Prompt Engineering</span>
+                            <span class="skill">Embeddings</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="edu-grid">
+                    <div class="edu-card">
+                        <h3 class="edu-school">Rutgers University</h3>
+                        <p class="edu-degree">B.S. Computer Science</p>
+                        <p class="edu-details">School of Arts and Sciences<br>GPA: 3.6 • Expected May 2027</p>
+                    </div>
+                    <div class="edu-card">
+                        <h3 class="edu-school">Montclair State University <span style="font-weight: 400; color: #888; font-size: 0.85rem;">(Transferred)</span></h3>
+                        <p class="edu-degree">B.S. Computer Science</p>
+                        <p class="edu-details">GPA: 3.8 • May 2025</p>
+                    </div>
+                </div>
+                <div class="involvement" style="margin-top: 16px;">
+                    <strong>Extracurriculars:</strong> Member, Rutgers IEEE ML/AI &nbsp;|&nbsp; 
+                    <strong>Coursework:</strong> Data Structures & Algorithms, Software Methodology, Computer Architecture, Design & Analysis of Algorithms
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Experience</h2>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <div>
+                            <h3 class="entry-title">Undergraduate Research Assistant</h3>
+                            <p class="entry-sub">Montclair State University</p>
+                        </div>
+                        <span class="entry-date">Jan 2025 – Present</span>
+                    </div>
+                    <ul class="entry-list">
+                        <li>Use Python and Jupyter to solve complex scientific problems involving fluid dynamics</li>
+                        <li>Study double-gyre flows and visualize FTLE fields that govern movement within these flows</li>
+                        <li>Now applying methods to real ocean data to create FTLE models</li>
+                    </ul>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-head">
+                        <div>
+                            <h3 class="entry-title">IT Support Technician</h3>
+                            <p class="entry-sub">Printwrap <span class="entry-location">• Cedar Grove, NJ</span></p>
+                        </div>
+                        <span class="entry-date">May 2025 – Jan 2026</span>
+                    </div>
+                    <ul class="entry-list">
+                        <li>Maintained and troubleshot computers connected to converting machines</li>
+                        <li>Supported digital printing presses and their control systems</li>
+                        <li>Managed packing line interfaces and production tracking software</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Projects</h2>
+
+                <div class="project-card">
+                    <h3 class="project-title">AI Toolkit Library</h3>
+                    <p class="project-desc">
+                        C library for loading and running pre-trained models in ONNX format, optimized for 
+                        CPU inference. Includes fast matrix math library built from scratch. Tools: image classifier, 
+                        text sentiment analyzer, speech command recognizer, object detection, face recognition, and more.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech">C</span>
+                        <span class="tech">ONNX</span>
+                        <span class="tech">Matrix Math</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">
+                        YOFO Safety Evaluator
+                        <a href="https://doi.org/10.48550/arXiv.2511.16600" class="project-link" target="_blank">arXiv ↗</a>
+                    </h3>
+                    <p class="project-desc">
+                        Method assessing 12 safety categories in LLM outputs with a single forward pass. 
+                        Achieved 10x cost reduction and 4x speedup compared to standard multi-call approaches 
+                        while maintaining accuracy. Built pipeline including LoRA fine-tuning, benchmarking, and Gradio demo.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech">Python</span>
+                        <span class="tech">LoRA</span>
+                        <span class="tech">Gradio</span>
+                        <span class="tech">NLP</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Virality Engine</h3>
+                    <p class="project-desc">
+                        Microservices platform simulating how ideas propagate across 10k+ AI-driven agents. 
+                        Features OAuth2/OIDC auth, JWT refresh flows, Redis-backed rate limits, and LLM-powered 
+                        mutation service (OpenAI + ChromaDB + RAG). Orchestrated cloud data stores including 
+                        Supabase Postgres, MongoDB Atlas, and Redis Cloud with Kafka-style event flows.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech">React</span>
+                        <span class="tech">TypeScript</span>
+                        <span class="tech">GraphQL</span>
+                        <span class="tech">gRPC</span>
+                        <span class="tech">OpenAI</span>
+                        <span class="tech">ChromaDB</span>
+                        <span class="tech">Kafka</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Global Radio</h3>
+                    <p class="project-desc">
+                        3D globe-based radio explorer with live stations in 50+ cities. Features real-time 
+                        audio analysis (Meyda + Web Audio API) to classify streams, AI-powered "What's Playing?" 
+                        with iTunes API integration, and an AI "Mood Map" that color-codes stations by energy.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech">React</span>
+                        <span class="tech">Three.js</span>
+                        <span class="tech">TypeScript</span>
+                        <span class="tech">Web Audio API</span>
+                        <span class="tech">Meyda</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">AI-Assisted DAW</h3>
+                    <p class="project-desc">
+                        Digital Audio Workstation generating instrumentals in the style of top hip hop producers. 
+                        Trained transformer-based model on curated dataset of samples from renowned producers, 
+                        enabling custom instrumental generation with selectable producer styles.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech">Python</span>
+                        <span class="tech">Transformers</span>
+                        <span class="tech">Audio ML</span>
+                        <span class="tech">Deep Learning</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">NYC House Pricing Predictor</h3>
+                    <p class="project-desc">
+                        Predictive model trained on housing data for 1-3 bedroom homes across all 5 NYC boroughs. 
+                        Delivers accurate price estimates based on location, size, and other factors. Includes 
+                        location-specific insights like walkability scores and school ratings.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech">Python</span>
+                        <span class="tech">ML</span>
+                        <span class="tech">Data Analysis</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
